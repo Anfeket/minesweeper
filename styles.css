@@ -1,0 +1,141 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+}
+
+:root {
+    --cell-size: 30px;
+}
+
+#game-content {
+    display: flex; /* Create a flex container */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the whole viewport is used */
+    margin: 0; /* Remove default margin */
+}
+
+#inner-content {
+    height: 70vh;
+    width: 70vh;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto auto;
+    justify-content: center;
+}
+
+#minefield {
+    float: left;
+    display: flex;
+    flex-direction: column; /* Optional, if you want the game board vertically aligned */
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-radius: 2%;
+}
+
+#game-info {
+    width: 200px;
+    height: 100%;
+    background-color: #f0f0f0;
+    padding-inline: 10px;
+    border-radius: 2%;
+}
+
+#scorelog {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    margin-top: 10px;
+}
+
+.scorelog-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 5px;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(var(--cell-size) * 0.5);
+    background-color: #979797;
+    margin: 1px;
+    border-radius: 20%;
+    user-select: none;
+}
+
+.cell.mine {
+    background-color: red;
+    font-size: 0;
+    background-image: url("images/mine.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cell.revealed {
+    border-color: rgb(110, 110, 110);
+    background-color: #d6d6d6;
+}
+
+.cell.flag {
+    background-color: yellow;
+    background-image: url("images/flag.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 0;
+    border-color: #000000;
+}
+
+.cell.flag.failed {
+    border-color: red;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000000;
+        color: #b6b6b6;
+    }
+    #minefield {
+        background-color: #0e0e0e;
+    }
+    #game-info {
+        background-color: #0e0e0e;
+    }
+    .cell {
+        background-color: #393939;
+        border-color: #393939;
+    }
+    .cell.revealed {
+        border-color: #090909;
+        background-color: #090909;
+        color: #b6b6b6;
+    }
+    .cell.flag {
+        background-color: #636363;
+        border-color: #636363;
+    }
+    .cell.mine {
+        background-color: #300c0c;
+        border-color: #300c0c;
+    }
+    .cell.flag.failed {
+        background-color: #300c0c;
+        border-color: #300c0c;
+    }
+}
